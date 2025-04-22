@@ -62,11 +62,20 @@ function Calculadora(){
     }
 
     this.deletarUltimo = () => {
-        this.valorAtual = this.valorAtual.slice(0, -1);
-        this.atualizarDisplay();
-        if(this.valorAtual === ' '.trim()){
-            this.operadorAntes.innerText = '';
+        const ultimoCaractere = this.valorAtual.slice(-1);
+
+        if (ultimoCaractere === ' ') {
+            this.valorAtual = this.valorAtual.slice(0, -3); 
+            this.operadorUsado = false;
+        } else {
+            this.valorAtual = this.valorAtual.slice(0, -1); 
         }
+
+        if (this.valorAtual === '') {
+            this.valorAtual = '0'; 
+            this.operadorAntes.innerText = ''; 
+        }
+        this.atualizarDisplay();
     }
 
     this.adicionarOperador = (operador) => {
