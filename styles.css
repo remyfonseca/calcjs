@@ -20,7 +20,6 @@ body{
     transform: translate(-50%, -50%);
 }
 
-
 .grid-container button {
     cursor: pointer;
     font-size: 2rem;
@@ -32,7 +31,7 @@ body{
 }
 
 .grid-container button:hover {
-    background-color: #333;
+    background-color: #5a5a5a;
     color: #fff;
 }
 
@@ -71,4 +70,104 @@ body{
     color: #fff;
     font-size: 2.5rem;
     font-family: 'Digital-7', monospace;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Digital-7', monospace;
+    gap: 15px;
+    transition: transform 0.2s;
+}
+
+footer a {
+    font-size:25px;
+    color: #ca841a;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+footer p {
+    color: #111;
+    padding-left: 38px;
+}
+footer a:nth-last-child(1) {
+    padding-right: 38px;
+}
+footer a:hover {
+    font-size: 28px;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 110px);
+        grid-template-rows: minmax(125px, auto) repeat(5, 105px);
+    }
+
+    .grid-container button {
+        font-size: 2rem;
+    }
+
+    .grid-container .output .previus-operand {
+        font-size: 1.7rem;
+    }
+
+    .grid-container .output .current-operand {
+        font-size: 2.5rem;
+    }
+    footer {
+        bottom: 120px;
+        width: 90%;
+        }
+        
+        footer a {
+        font-size: 30px;
+        }
+        footer p {
+        color: #111;
+        padding-left: 15px;
+        }
+        footer a:nth-last-child(1) {
+        padding-right: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 88px);
+        grid-template-rows: minmax(115px, auto) repeat(5, 85px);
+    }
+
+    .grid-container button {
+        font-size: 1.6rem;
+    }
+
+    .grid-container .output .previus-operand {
+        font-size: 1.5rem;
+    }
+
+    .grid-container .output .current-operand {
+        font-size: 2rem;
+    }
+
+    footer {
+        bottom: 120px;
+        width: 90%;
+        }
+        
+        footer a {
+        font-size: 30px;
+        }
+        footer p {
+        color: #111;
+        padding-left: 15px;
+        }
+        footer a:nth-last-child(1) {
+        padding-right: 18px;
+    }
 }
