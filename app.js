@@ -10,6 +10,7 @@ function Calculadora(){
 
     this.valorAtual = '';
     this.valorAnterior = '';
+    this.operadorUsado = false;
 
     this.inicia = () => {
         const botoesNumeros =  document.querySelectorAll('[data-number]');
@@ -49,6 +50,7 @@ function Calculadora(){
         if(this.valorAtual === '') alert('Nada para limpar');
         this.valorAtual = '';
         this.atualizarDisplay();
+        this.operadorUsado = false;
         if(this.valorAtual === ' '.trim()){
             this.operadorAntes.innerText = '';
             this.operadorAtual.innerText = '0';
@@ -68,23 +70,20 @@ function Calculadora(){
     }
 
     this.adicionarOperador = (operador) => {
+
+        if (this.operadorUsado) return;
         const ultimoCaractere = this.valorAtual.slice(-1);
         
-        // Se o último caractere for um operador e o novo operador for diferente,
-        // substituímos o operador anterior pelo novo
         if (ultimoCaractere === '+' || ultimoCaractere === '-' || ultimoCaractere === '*' || ultimoCaractere === '÷') {
-            // Substituímos o operador no final da string
             this.valorAtual = this.valorAtual.slice(0, -1) + operador;
         } else {
-            // Caso contrário, adicionamos o operador normalmente com espaço
             this.valorAtual += ` ${operador} `;
+            this.operadorAntes.innerText = this.valorAtual;
         }
-    
+        this.operadorUsado = true;
         this.atualizarDisplay();
     }
     
-    
-
     this.calcularResultado = () => {
         console.log('Iniciando cálculo...');
         this.valorAntes = this.valorAtual;
@@ -129,9 +128,9 @@ function Calculadora(){
         console.log('Resultado:', resultado);
         this.valorAtual = resultado.toString();
         this.atualizarDisplay();
+        this.operadorUsado = false;
     }
 }
-
 
 const calc = new Calculadora();
 calc.inicia();
